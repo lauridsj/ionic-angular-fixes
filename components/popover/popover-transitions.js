@@ -126,7 +126,8 @@ var PopoverTransition = (function (_super) {
             originX = 'right';
         }
         // make it pop up if there's room above
-        if (targetTop + targetHeight + popoverHeight > bodyHeight && targetTop - popoverHeight > 0) {
+        var showBottom = "showBottom" in ev && ev.showBottom;
+        if (showBottom || (targetTop + targetHeight + popoverHeight > bodyHeight && targetTop - popoverHeight > 0)) {
             arrowCSS.top = targetTop - (arrowHeight + 1);
             popoverCSS.top = targetTop - popoverHeight - (arrowHeight - 1);
             nativeEle.className = nativeEle.className + ' popover-bottom';
